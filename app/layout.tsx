@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { ThemePreview } from "@/components/site/ThemePreview";
 
 export const metadata: Metadata = {
   title: {
@@ -30,7 +29,6 @@ export default function RootLayout({
         <link rel="stylesheet" href="/lumko.css" />
       </head>
       <body suppressHydrationWarning>
-        <ThemePreview />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

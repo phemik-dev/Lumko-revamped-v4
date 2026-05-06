@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
+  output: "export",
+  trailingSlash: true,
   reactStrictMode: true,
   experimental: {
     cpus: 1,
     webpackBuildWorker: false,
-    workerThreads: false
+    workerThreads: true
   }
 };
 

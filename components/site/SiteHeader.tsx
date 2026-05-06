@@ -144,6 +144,7 @@ function MenuGlyph({ active }: { active?: boolean }) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const currentPath = pathname ?? "/";
   const [openMobile, setOpenMobile] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobilePanel, setMobilePanel] = useState<string | null>(null);
@@ -209,7 +210,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
           {navItems.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(`${item.href}/`);
+            const active = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
             const expanded = activeMenu === item.label;
             return (
               <div key={item.href} onMouseEnter={() => openMenu(item.label)}>
@@ -278,7 +279,7 @@ export function SiteHeader() {
               <p className="text-xs font-bold uppercase tracking-[0.14em] text-sovereign-gold-dark">Go directly to</p>
               <div className="mt-3 grid gap-1">
                 {activeItem.routes.map((route) => {
-                  const activeRoute = pathname === route.href || pathname === route.href.split("#")[0];
+                  const activeRoute = currentPath === route.href || currentPath === route.href.split("#")[0];
                   return (
                     <Link
                       key={route.href + route.label}
